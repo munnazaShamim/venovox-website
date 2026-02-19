@@ -26,7 +26,7 @@ interface Service {
     url: string;
     metaTitle: string;
     metaDescription: string;
-    h1: string;
+    h1?: string;
     tagline?: string;
     overview?: string;
     sections?: Section[];
@@ -54,7 +54,7 @@ export default function ServicePageClient({ slug }: ServicePageClientProps) {
         const foundService = servicesData.services.find(
             (service) => service.id === slug
         );
-        setService(foundService || null);
+        setService((foundService as Service) || null);
     }, [slug]);
 
     // REMOVED: Client-side meta tag updates
